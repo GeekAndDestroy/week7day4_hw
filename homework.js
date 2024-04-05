@@ -111,7 +111,13 @@ function getMovieInfo(movieName){
     })
 }
 
-function printMovieInfo(){};
+async function printMovieInfo(movieName){
+    getMovieInfo(movieName)
+        .then( movie => {
+            console.log(`${movieName} directed by ${movie.director}. A story of ${movie.description} that runs for ${movie.runtime}.`)
+        })
+        .catch( err => console.warn(err) )
+};
 
 // Example 1
 printMovieInfo('Indiana Jones and the Dark Knight')
